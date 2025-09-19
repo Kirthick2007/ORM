@@ -24,28 +24,39 @@ Execute Django admin and create details for 10 books
 
 ## PROGRAM
 ```
+models.py
 from django.db import models
-
-class Car(models.Model):
-    Car_ID = models.IntegerField(primary_key=True) 
-    Car_name = models.CharField(max_length=100) 
+from django.contrib import admin
+class Movies(models.Model):
+    M_ID=models.IntegerField(primary_key=True)
+    M_name=models.CharField(max_length=100)
     Release_date=models.DateField()
-    Brand=models.CharField(max_length=50) 
-    Company=models.CharField(max_length=100)
-    type = models.CharField(max_length=50)
+    Director=models.CharField(max_length=50)
+    Actors=models.CharField(max_length=100)
+ 
+class MoviesAdmin(admin.ModelAdmin):
+    list_display=('M_ID','M_name','Release_date','Director','Actors')  
 
-class CarAdmin(admin.ModelAdmin): 
-    list_display=('Car_ID', 'Car_name', 'Release_date', 'Brand', 'Company','type' )
+
+admin.py:
+from django.contrib import admin
+from .models import Movies, MoviesAdmin
+admin.site.register(Movies, MoviesAdmin)
+
+
 ```
 
 
 
 ## OUTPUT
+<img width="1244" height="554" alt="image" src="https://github.com/user-attachments/assets/49e769e3-e122-4273-8fc7-7f407db74f1d" />
+
 
 Include the screenshot of your admin page.
 
 
 ## RESULT
 Thus the program for creating a database using ORM hass been executed successfully
+
 
 
